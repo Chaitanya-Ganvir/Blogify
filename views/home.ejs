@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include("./partials/head") %>
+    <title>Homepage</title>
+    <style>
+      .heading {
+        font-size: 2.5em;
+        color: #343a40;
+        margin: 0;
+        padding: 0.5em;
+        background: linear-gradient(to right, #7ee7f5, #ff9a8b);
+        color: #fff;
+        border-radius: 10px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("./partials/nav") %>
+
+    <div class="container mt-4">
+      <h1 class="heading">
+        Welcome to Blogify: Insights, Stories, and Inspiration
+      </h1>
+
+      <div class="row row-cols-3">
+        <% blogs.forEach(blog => { %>
+        <div class="col">
+          <div class="card col mt-4" style="width: 18rem">
+            <img
+              src="<%= blog.coverImageUrl %>"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title"><%= blog.title %></h5>
+              <a href="/blog/<%= blog._id %>" class="btn btn-primary"
+                >Read More</a
+              >
+            </div>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+    </div>
+    <%- include("./partials/script") %>
+  </body>
+</html>
